@@ -111,6 +111,19 @@ body.protect article, body.protect .list, body.protect main{-webkit-user-select:
 body.protect img{pointer-events:none}
 .copy-msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;font-size:15px;z-index:10;display:none}
 @media print{body *{display:none!important}body::after{content:"Impression désactivée. © 2026 David Elie. Tous droits réservés.";display:block;padding:40px;font:16px sans-serif}}
+.feature{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--accent-soft);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:14px;padding:24px 28px;margin-top:26px}
+.feature .heb-big{font-family:var(--display);font-size:76px;color:var(--accent);line-height:1;direction:rtl}
+.feature .eyebrow,.feature-card .eyebrow{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gold)}
+.feature h2{font-family:var(--display);font-size:clamp(26px,3.5vw,34px);line-height:1.2;margin:4px 0 8px;text-wrap:balance}
+.feature p{margin:0;max-width:62ch}
+.feature .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.feature-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+.feature-card{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink)}
+.feature-card:hover{border-color:var(--accent);border-top-color:var(--gold)}
+.feature-card .fc-heb{font-family:var(--display);font-size:30px;color:var(--accent);direction:rtl;text-align:right}
+.feature-card strong{font-family:var(--display);font-size:20px;line-height:1.25}
+.feature-card span:last-child{color:var(--muted);font-size:15px}
+@media (max-width:560px){.feature{grid-template-columns:1fr;padding:20px}.feature .heb-big{font-size:56px}}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:15px;padding:26px 0 40px}
 .empty{padding:30px;text-align:center;color:var(--muted)}
 @media (max-width:480px){body{font-size:17px}.brand h1{font-size:22px}}
@@ -385,6 +398,39 @@ const COPYRIGHT = `<div class="copyright">
 <p>Toute exploitation non autorisée de l'ouvrage ou de l'un quelconque des éléments qu'il contient sera considérée comme constitutive d'une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de la Propriété Intellectuelle.</p>
 </div>`;
 const NO_COPYRIGHT = ["outil-clavier"];
+const FEATURE = `<section class="feature" aria-label="À la une">
+  <div class="heb-big" aria-hidden="true">מִלּוֹן</div>
+  <div>
+    <div class="eyebrow">À la une · gratuit</div>
+    <h2>Dictionnaire d'hébreu biblique</h2>
+    <p>734 entrées, de l'hébreu vers le français et du français vers l'hébreu, avec recherche par lettre ou par racine. Établi par David Elie d'après le dictionnaire de Sander et Trénel.</p>
+    <div class="actions">
+      <a class="btn" href="dictionnaire-hebreu-biblique.pdf" target="_blank" rel="noopener">Télécharger le dictionnaire</a>
+      <a class="btn ghost" href="dictionnaire-hebreu-biblique-telephone.pdf" target="_blank" rel="noopener">Version téléphone</a>
+      <a class="btn ghost" href="#dictionnaire-sander">En savoir plus</a>
+    </div>
+  </div>
+</section>
+<div class="feature-row">
+  <a class="feature-card" href="#outil-alphabet">
+    <span class="eyebrow">Exercices</span>
+    <span class="fc-heb" aria-hidden="true">אָלֶף־בֵּית</span>
+    <strong>Alphabet interactif et quiz</strong>
+    <span>Apprenez les 22 lettres et testez-vous.</span>
+  </a>
+  <a class="feature-card" href="#schemes-binyanim">
+    <span class="eyebrow">Exercices</span>
+    <span class="fc-heb" aria-hidden="true">שֵׁמוֹת</span>
+    <strong>Les schèmes des binyanim</strong>
+    <span>La fiche pour reconnaître les 7 binyanim.</span>
+  </a>
+  <a class="feature-card" href="#bible-pdf">
+    <span class="eyebrow">Bibles</span>
+    <span class="fc-heb" aria-hidden="true">תנ״ך</span>
+    <strong>La Bible hébraïque en PDF</strong>
+    <span>39 livres en gros caractères, avec ou sans cantillation.</span>
+  </a>
+</div>`;
 // ===== AFFICHAGE =====
 const app = document.getElementById("app");
 let filter = "Tout", query = "";
@@ -393,7 +439,7 @@ const esc = s => s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':
 
 function listView(onlyTools, libOnly){
   const cats = ["Tout", ...new Set(ARTICLES.filter(a=>a.type!=="page").map(a=>a.cat))];
-  app.innerHTML = `
+  app.innerHTML = `${onlyTools ? "" : FEATURE}
   <div class="searchbar">
     <label for="q">${onlyTools ? "Les outils gratuits" : libOnly ? "Bibles et dictionnaires" : "Que cherchez-vous ?"}</label>
     <input id="q" type="search" placeholder="Ex. : voyelles, clavier, binyan, alphabet…" value="${esc(query)}" autocomplete="off">
