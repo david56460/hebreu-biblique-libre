@@ -172,6 +172,25 @@ const ARTICLES = [
   body:`<p>Touchez une lettre pour voir sa forme finale ou ses particularités. En dessous, un petit quiz pour retenir les noms.</p><div id="abc-zone"></div>`
 },
 {
+  id:"bible-pdf", type:"biblio", cat:"Bibles", heb:"תנ״ך",
+  title:"La Bible hébraïque en PDF (texte massorétique)",
+  summary:"Les 39 livres en hébreu, vocalisés, en gros caractères, avec navigation par livre et chapitre. Deux versions : avec ou sans cantillation.",
+  keywords:"bible hébraïque pdf télécharger texte massorétique tanakh cantillation téamim accents leningrad gros caractères",
+  body:`
+<p>Le texte complet de la Bible hébraïque (Torah, Prophètes, Écrits) : <strong>39 livres, 23 213 versets</strong>, avec les voyelles, en gros caractères pour une lecture confortable.</p>
+<ul>
+<li><strong>Navigation</strong> : une barre en haut de chaque page permet d'aller directement à un livre, puis à un chapitre.</li>
+<li><strong>Recherche</strong> : Ctrl+F (ou Cmd+F) dans votre lecteur PDF.</li>
+</ul>
+<h3>Quelle version choisir ?</h3>
+<p><strong>Sans cantillation</strong> : seulement les consonnes et les voyelles. C'est la version la plus simple pour apprendre à lire.</p>
+<p><strong>Avec cantillation</strong> : on y trouve en plus les <em>téamim</em>, ces petits signes placés au-dessus et au-dessous des mots. Ils indiquent la mélodie de la lecture chantée à la synagogue, l'accent tonique du mot et le découpage du verset. Pour lecteurs plus avancés.</p>
+<p><a class="btn" href="https://github.com/david56460/hebreu-biblique-libre/releases/download/pdf/bible-hebraique.pdf" target="_blank" rel="noopener">Bible sans cantillation (PDF, 29 Mo)</a></p>
+<p><a class="btn ghost" href="https://github.com/david56460/hebreu-biblique-libre/releases/download/pdf/bible-hebraique-cantillation.pdf" target="_blank" rel="noopener">Bible avec cantillation (PDF, 32 Mo)</a></p>
+<div class="note">Fichiers volumineux (plus de 3 000 pages) : le téléchargement peut prendre une minute.</div>
+<p class="meta">Texte : Westminster Leningrad Codex (domaine public), d'après l'Open Scriptures Hebrew Bible (OSHB), licence CC BY 4.0. Mise en page et navigation : David Elie.</p>`
+},
+{
   id:"bible-hebraique", type:"biblio", cat:"Bibles", heb:"תּוֹרָה נְבִיאִים כְּתוּבִים",
   title:"La Bible hébraïque en ligne",
   summary:"Le texte massorétique complet, avec voyelles, consultable gratuitement.",
@@ -202,12 +221,22 @@ const ARTICLES = [
 <div class="note">Les versions récentes (Segond 21, Bible du Semeur, Bible hébraïque Stuttgartensia…) sont protégées : elles ne peuvent pas être mises en téléchargement ici.</div>`
 },
 {
-  id:"dictionnaire-sander", type:"biblio", cat:"Dictionnaires", heb:"מִלּוֹן", soon:true,
-  title:"Dictionnaire hébreu-français (d'après Sander & Trénel)",
-  summary:"Dictionnaire gratuit établi d'après Sander & Trénel (1859), en PDF et en ligne.",
-  keywords:"dictionnaire hébreu français sander trénel 1859 vocabulaire racines pdf gratuit",
-  body:`<p>Le dictionnaire de Sander et Trénel (1859) est un dictionnaire hébreu-français de la Bible. Une version claire, établie d'après lui, est en préparation à partir du vocabulaire des cours et des textes étudiés.</p>
-<div class="note">Il sera offert gratuitement ici, en PDF et en version consultable en ligne.</div>`
+  id:"dictionnaire-sander", type:"biblio", cat:"Dictionnaires", heb:"מִלּוֹן",
+  title:"Dictionnaire d'hébreu biblique (d'après Sander & Trénel)",
+  summary:"734 entrées, de l'hébreu vers le français et du français vers l'hébreu, avec recherche par racine. Gratuit, en PDF pour ordinateur ou téléphone.",
+  keywords:"dictionnaire hébreu français sander trénel 1859 vocabulaire racines pdf gratuit télécharger téléphone",
+  body:`
+<p>Un dictionnaire d'hébreu biblique clair, établi par David Elie d'après le <em>Dictionnaire hébreu-français</em> de N. P. Sander et I. Trénel (1859). Chaque définition a été collationnée avec la page du Sander.</p>
+<ul>
+<li><strong>734 entrées</strong>, construites à partir du vocabulaire des cours et des textes étudiés. Le dictionnaire s'enrichira au fil des éditions.</li>
+<li><strong>Deux sens de lecture</strong> : Hébreu → Français (face A) et Français → Hébreu (face B).</li>
+<li><strong>Recherche par lettre ou par racine</strong> : touchez la 1re lettre, puis la 2e, puis la racine (par exemple <span class="he">מלכ</span>).</li>
+<li>Préface, notice d'utilisation, abréviations et tableau des nombres (cardinaux et ordinaux).</li>
+</ul>
+<h3>Deux formats</h3>
+<p><a class="btn" href="dictionnaire-hebreu-biblique.pdf" target="_blank" rel="noopener">Pour ordinateur et tablette (PDF, 5 Mo)</a></p>
+<p><a class="btn ghost" href="dictionnaire-hebreu-biblique-telephone.pdf" target="_blank" rel="noopener">Pour téléphone (PDF, 6 Mo)</a></p>
+<p class="meta">Édition de novembre 2026.</p>`
 },
 {
   id:"dictionnaires-ligne", type:"biblio", cat:"Dictionnaires", heb:"שָׁרָשִׁים",
@@ -283,7 +312,25 @@ const ARTICLES = [
 </tbody></table></div>
 <h3>Accompli et inaccompli</h3>
 <p>L'hébreu biblique distingue surtout l'<strong>accompli</strong> (action vue comme achevée) et l'<strong>inaccompli</strong> (action vue comme en cours ou à venir). La méthode Yehi-Or commence par l'inaccompli.</p>
+<div class="note">Pour reconnaître chaque binyan d'un coup d'œil, téléchargez la fiche <a href="#schemes-binyanim">Les schèmes (shemot) des binyanim</a>.</div>
 `
+},
+{
+  id:"schemes-binyanim", type:"article", cat:"Grammaire", heb:"שֵׁמוֹת",
+  title:"Les schèmes (shemot) des binyanim",
+  summary:"Une fiche de 2 pages pour reconnaître les 7 binyanim d'un coup d'œil, avec les sons et des exemples bibliques.",
+  keywords:"schèmes shemot shem binyanim qal nifal piel pual hitpael hifil hofal qatal yiqtol conjugaison fiche pdf",
+  body:`
+<p>En hébreu, un verbe se construit en plaçant sa racine dans un <strong>schème</strong> (en hébreu <em>shem</em>, au pluriel <em>shemot</em>) : un moule de voyelles, de préfixes et parfois de lettres doublées. Chaque binyan a ses propres schèmes. Les reconnaître permet d'identifier le binyan d'un verbe, donc son sens (simple, passif, intensif, causatif, réfléchi).</p>
+<h3>Ce que contient la fiche</h3>
+<ul>
+<li><strong>Les 7 binyanim</strong> (Qal, Nifal, Piel, Pual, Hitpael, Hifil, Hofal) sur la racine modèle <span class="he">קטל</span> : accompli (qatal), inaccompli (yiqtol), impératif, infinitifs et participe.</li>
+<li><strong>En couleur</strong>, seulement les éléments qui permettent de reconnaître le binyan (lettres, voyelles, daguesh) ; le reste est en noir.</li>
+<li>Sous chaque forme, <strong>la prononciation</strong> en lettres françaises.</li>
+<li>Le <strong>son distinctif</strong> de chaque binyan, le qatal conjugué à toutes les personnes, et un <strong>exemple biblique</strong> par binyan.</li>
+</ul>
+<p><a class="btn" href="schemes-binyanim.pdf" target="_blank" rel="noopener">Ouvrir la fiche (PDF, 2 pages)</a></p>
+<div class="note">Pour comprendre d'abord ce qu'est un binyan, lisez l'article <a href="#verbe">Le verbe hébreu : racine et binyanim</a>.</div>`
 },
 {
   id:"ecrire-ordinateur", type:"article", cat:"Clavier", heb:"⌨",
