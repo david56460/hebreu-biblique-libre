@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hébreu biblique libre</title>
+<meta name="description" content="Ressources gratuites pour apprendre l'hébreu biblique : alphabet, voyelles, verbe, clavier hébreu, outils en ligne et dictionnaire. Établi par David Elie.">
+<meta name="keywords" content="hébreu biblique, apprendre l'hébreu, alphabet hébreu, voyelles hébraïques, nikkoud, binyanim, clavier hébreu, dictionnaire hébreu français, Yehi-Or, gratuit">
+<meta name="author" content="David Elie">
+<meta name="robots" content="index, follow, noai, noimageai">
+<meta name="copyright" content="© 2026 David Elie. Tous droits réservés.">
+<meta property="og:title" content="Hébreu biblique libre">
+<meta property="og:description" content="Outils et explications gratuits pour apprendre l'hébreu biblique.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"Hébreu biblique libre","inLanguage":"fr","author":{"@type":"Person","name":"David Elie"},"description":"Ressources gratuites pour apprendre l'hébreu biblique.","isAccessibleForFree":true}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Plan : bleu « tekhelet » + blanc pierre, display Frank Ruhl Libre (latin + hébreu), corps Assistant.
+   Mise en page : en-tête avec recherche, filtres par thème, liste d'articles ; chaque article et outil a son ancre #nom. */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#18202e; --muted:#5b6474;
+  --accent:#1f4fa3; --accent-soft:#e3ebf8; --gold:#a8791c; --line:#dde1e8;
+  --display:"Frank Ruhl Libre","Times New Roman",serif;
+  --body:"Assistant","Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10141c; --surface:#171d28; --ink:#e7ebf2; --muted:#9aa3b3;
+  --accent:#7ea6ec; --accent-soft:#1d2a44; --gold:#d9ad55; --line:#2a3242; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#10141c; --surface:#171d28; --ink:#e7ebf2; --muted:#9aa3b3;
+  --accent:#7ea6ec; --accent-soft:#1d2a44; --gold:#d9ad55; --line:#2a3242; color-scheme:dark;}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.site{background:var(--surface);border-bottom:1px solid var(--line)}
+.top{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:22px 0 14px}
+.brand{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink)}
+.brand .mark{font-family:var(--display);font-size:40px;line-height:1;color:var(--accent);direction:rtl}
+.brand h1{font-family:var(--display);font-size:26px;margin:0;line-height:1.15}
+.brand small{display:block;font-family:var(--body);font-size:14px;color:var(--muted);font-weight:400}
+nav.main{display:flex;gap:6px;flex-wrap:wrap}
+nav.main a{text-decoration:none;color:var(--ink);padding:6px 12px;border-radius:6px;font-weight:600;font-size:16px}
+nav.main a:hover,nav.main a.on{background:var(--accent-soft);color:var(--accent)}
+.free{background:var(--accent);color:#fff;padding:10px 0;font-size:15px}
+:root[data-theme="dark"] .free{color:#10141c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .free{color:#10141c}}
+.searchbar{padding:28px 0 8px}
+.searchbar label{display:block;font-family:var(--display);font-size:24px;margin-bottom:10px;text-wrap:balance}
+.searchbar input{width:100%;font:inherit;font-size:19px;padding:14px 16px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.searchbar input:focus{border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 6px}
+.chip{font:inherit;font-size:15px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 14px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+main{padding:10px 0 60px}
+.count{color:var(--muted);font-size:15px;margin:8px 0 14px}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink);transition:border-color .15s}
+.card:hover{border-color:var(--accent)}
+.card .cat{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gold)}
+.card h3{font-family:var(--display);font-size:22px;margin:0;line-height:1.25;text-wrap:balance}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.card .heb{font-family:var(--display);font-size:28px;color:var(--accent);direction:rtl;text-align:right}
+.tag-soon{display:inline-block;font-size:12px;font-weight:700;background:var(--accent-soft);color:var(--accent);padding:2px 8px;border-radius:4px;align-self:flex-start}
+article{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px clamp(18px,4vw,48px);max-width:820px;margin:0 auto}
+article .back{font-weight:600;text-decoration:none;font-size:16px}
+article h2{font-family:var(--display);font-size:clamp(28px,4vw,38px);line-height:1.2;margin:14px 0 6px;text-wrap:balance}
+article h3{font-family:var(--display);font-size:24px;margin:30px 0 8px}
+article .meta{color:var(--muted);font-size:15px;margin-bottom:18px}
+article p,article li{max-width:65ch}
+.he{font-family:var(--display);direction:rtl;unicode-bidi:isolate;font-size:1.25em;color:var(--accent)}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:middle}
+th{font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+td.big{font-family:var(--display);font-size:32px;color:var(--accent);text-align:center;direction:rtl}
+td.num{font-variant-numeric:tabular-nums}
+.note{border-left:4px solid var(--gold);background:var(--accent-soft);padding:12px 16px;border-radius:0 8px 8px 0;margin:18px 0}
+.btn{font:inherit;font-weight:700;font-size:16px;background:var(--accent);color:var(--surface);border:0;border-radius:8px;padding:10px 18px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+/* Clavier */
+.kb-out{width:100%;min-height:90px;font-family:var(--display);font-size:30px;direction:rtl;text-align:right;padding:12px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.kb{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;margin:12px 0;direction:rtl}
+.kb button{font-family:var(--display);font-size:26px;padding:8px 0;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer}
+.kb button:hover{border-color:var(--accent);color:var(--accent)}
+.kb button small{display:block;font-family:var(--body);font-size:11px;color:var(--muted)}
+.kb-actions{display:flex;flex-wrap:wrap;gap:8px}
+.status{color:var(--gold);font-weight:600;min-height:1.6em}
+/* Alphabet interactif */
+.abc{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin:14px 0;direction:rtl}
+.letter{direction:ltr;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.letter .g{font-family:var(--display);font-size:46px;color:var(--accent);line-height:1.1}
+.letter .n{font-weight:700}
+.letter .d{font-size:14px;color:var(--muted)}
+.letter[aria-expanded="true"]{border-color:var(--gold)}
+.quiz{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:10px}
+.quiz .q{font-family:var(--display);font-size:64px;color:var(--accent);min-width:80px;text-align:center}
+.quiz input{font:inherit;padding:8px 12px;border:2px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);width:160px}
+.copyright{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:var(--muted)}
+.copyright p{margin:0 0 8px;max-width:none}
+/* Protection contre la copie */
+body.protect article, body.protect .list, body.protect main{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+body.protect img{pointer-events:none}
+.copy-msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;font-size:15px;z-index:10;display:none}
+@media print{body *{display:none!important}body::after{content:"Impression désactivée. © 2026 David Elie. Tous droits réservés.";display:block;padding:40px;font:16px sans-serif}}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:15px;padding:26px 0 40px}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+@media (max-width:480px){body{font-size:17px}.brand h1{font-size:22px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="free"><div class="wrap">Toutes les ressources de ce site sont gratuites, sans inscription.</div></div>
+  <div class="wrap top">
+    <a class="brand" href="#accueil">
+      <span class="mark" aria-hidden="true">אור</span>
+      <h1>Hébreu biblique libre<small>Outils et explications pour lire la Bible en hébreu</small></h1>
+    </a>
+    <nav class="main" aria-label="Rubriques">
+      <a href="#accueil" data-nav="accueil">Accueil</a>
+      <a href="#outils" data-nav="outils">Outils</a>
+      <a href="#bibliotheque" data-nav="bibliotheque">Bibles et dictionnaires</a>
+      <a href="#a-propos" data-nav="a-propos">À propos</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap" id="app"></div>
+<div class="copy-msg" id="copy-msg" role="status">Contenu protégé : la copie est désactivée. © David Elie</div>
+
+<footer>
+  <div class="wrap">
+    Établi par David Elie. Ressources offertes gratuitement pour tous ceux qui apprennent l'hébreu afin de se rapprocher de Dieu.<br>
+    Avec nos remerciements à l'institut Yehi-Or. <a href="https://www.helloasso.com/associations/yehi-or-institut" target="_blank" rel="noopener">S'inscrire auprès de Yehi-Or</a>
+  </div>
+</footer>
+
+<script>
+// ===== CONTENU DU BLOG =====
+// Pour ajouter un article ou un outil : ajouter un objet dans la liste ARTICLES.
+// type : "article" ou "outil" — cat : thème affiché — soon : true pour « bientôt disponible »
+const ARTICLES = [
+{
+  id:"application-yehi-or", type:"outil", cat:"Outils", heb:"לִמּוּד",
+  title:"Une application pour apprendre (inscrits Yehi-Or)",
+  summary:"Une application d'apprentissage peut être mise à disposition, sous réserve d'être inscrit à l'institut Yehi-Or.",
+  keywords:"application apprendre cours yehi-or inscription",
+  body:`<p>Une application pour apprendre l'hébreu biblique peut être mise à disposition, <strong>sous réserve d'être inscrit à l'institut Yehi-Or</strong>.</p>
+<p><a class="btn ghost" href="https://www.helloasso.com/associations/yehi-or-institut" target="_blank" rel="noopener">S'inscrire auprès de Yehi-Or</a></p>`
+},
+{
+  id:"outil-clavier", type:"outil", cat:"Outils", heb:"מִקְלֶדֶת",
+  title:"Clavier hébreu en ligne",
+  summary:"Tapez de l'hébreu avec voyelles sans rien installer, puis copiez le texte.",
+  keywords:"clavier virtuel taper écrire hébreu copier voyelles nikkoud",
+  body:`<p>Cliquez sur les lettres pour écrire. Pour ajouter une voyelle, cliquez d'abord sur la lettre puis sur le signe voyelle.</p><div id="kb-zone"></div>`
+},
+{
+  id:"outil-alphabet", type:"outil", cat:"Outils", heb:"אָלֶף־בֵּית",
+  title:"Alphabet interactif et petit quiz",
+  summary:"Les 22 lettres avec leur nom, leur son et leur valeur numérique. Testez-vous ensuite.",
+  keywords:"alphabet lettres quiz apprendre mémoriser aleph bet",
+  body:`<p>Touchez une lettre pour voir sa forme finale ou ses particularités. En dessous, un petit quiz pour retenir les noms.</p><div id="abc-zone"></div>`
+},
+{
+  id:"bible-hebraique", type:"biblio", cat:"Bibles", heb:"תּוֹרָה נְבִיאִים כְּתוּבִים",
+  title:"La Bible hébraïque en ligne",
+  summary:"Le texte massorétique complet, avec voyelles, consultable gratuitement.",
+  keywords:"bible hébraïque texte massorétique tanakh ancien testament leningrad codex lire en ligne",
+  body:`
+<p>Pour lire l'Ancien Testament dans sa langue d'origine, voici des sites gratuits et sérieux :</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Ressource</th><th>Contenu</th><th></th></tr></thead>
+<tbody>
+<tr><td><strong>Tanach.us</strong></td><td>Codex de Leningrad (Westminster), avec voyelles et accents</td><td><a class="btn ghost" href="https://www.tanach.us" target="_blank" rel="noopener">Ouvrir</a></td></tr>
+<tr><td><strong>Mechon Mamre</strong></td><td>Bible hébraïque, avec ou sans voyelles</td><td><a class="btn ghost" href="https://mechon-mamre.org" target="_blank" rel="noopener">Ouvrir</a></td></tr>
+<tr><td><strong>Sefaria</strong></td><td>Texte hébreu avec traduction en regard</td><td><a class="btn ghost" href="https://www.sefaria.org" target="_blank" rel="noopener">Ouvrir</a></td></tr>
+</tbody></table></div>
+<div class="note">Le Codex de Leningrad (vers l'an 1008) est le plus ancien manuscrit complet de la Bible hébraïque. C'est la base des éditions d'étude actuelles.</div>`
+},
+{
+  id:"bibles-francais", type:"biblio", cat:"Bibles", heb:"תַּרְגּוּם",
+  title:"Bibles en français libres de droits",
+  summary:"Traductions anciennes qu'on peut lire et partager librement, à côté du texte hébreu.",
+  keywords:"bible français louis segond 1910 darby martin ostervald traduction libre de droits gratuit",
+  body:`
+<p>Ces traductions françaises sont dans le domaine public : on peut les lire, les copier et les partager gratuitement.</p>
+<ul>
+<li><strong>Louis Segond 1910</strong> : la plus répandue en français.</li>
+<li><strong>Darby</strong> : traduction très proche du texte original.</li>
+<li><strong>Martin</strong> et <strong>Ostervald</strong> : traductions protestantes classiques.</li>
+</ul>
+<div class="note">Les versions récentes (Segond 21, Bible du Semeur, Bible hébraïque Stuttgartensia…) sont protégées : elles ne peuvent pas être mises en téléchargement ici.</div>`
+},
+{
+  id:"dictionnaire-sander", type:"biblio", cat:"Dictionnaires", heb:"מִלּוֹן", soon:true,
+  title:"Dictionnaire hébreu-français (d'après Sander & Trénel)",
+  summary:"Dictionnaire gratuit établi d'après Sander & Trénel (1859), en PDF et en ligne.",
+  keywords:"dictionnaire hébreu français sander trénel 1859 vocabulaire racines pdf gratuit",
+  body:`<p>Le dictionnaire de Sander et Trénel (1859) est un dictionnaire hébreu-français de la Bible. Une version claire, établie d'après lui, est en préparation à partir du vocabulaire des cours et des textes étudiés.</p>
+<div class="note">Il sera offert gratuitement ici, en PDF et en version consultable en ligne.</div>`
+},
+{
+  id:"dictionnaires-ligne", type:"biblio", cat:"Dictionnaires", heb:"שָׁרָשִׁים",
+  title:"Dictionnaires et lexiques d'hébreu biblique en ligne",
+  summary:"Lexiques gratuits pour chercher un mot ou une racine (souvent en anglais).",
+  keywords:"lexique dictionnaire strong bdb brown driver briggs gesenius racine en ligne",
+  body:`
+<div class="tablewrap"><table>
+<thead><tr><th>Ressource</th><th>Contenu</th><th></th></tr></thead>
+<tbody>
+<tr><td><strong>Blue Letter Bible</strong></td><td>Numéros Strong et lexique de Gesenius, mot par mot (anglais)</td><td><a class="btn ghost" href="https://www.blueletterbible.org" target="_blank" rel="noopener">Ouvrir</a></td></tr>
+<tr><td><strong>Sefaria</strong></td><td>Dictionnaire Brown-Driver-Briggs (BDB), accessible en cliquant sur un mot du texte</td><td><a class="btn ghost" href="https://www.sefaria.org" target="_blank" rel="noopener">Ouvrir</a></td></tr>
+</tbody></table></div>
+<div class="note">Le BDB et le Gesenius sont les grands lexiques classiques de l'hébreu biblique. Tous deux sont anciens et libres de droits.</div>`
+},
+{
+  id:"alphabet", type:"article", cat:"Alphabet", heb:"א ב ג",
+  title:"L'alphabet hébreu : les 22 lettres",
+  summary:"Noms, sons, valeurs numériques et les 5 lettres qui changent de forme en fin de mot.",
+  keywords:"alphabet lettres consonnes finales sofit valeur numérique droite gauche",
+  body:`
+<p>L'hébreu s'écrit et se lit <strong>de droite à gauche</strong>. L'alphabet compte <strong>22 lettres</strong>, toutes des consonnes. Les voyelles sont ajoutées par de petits signes (voir l'article sur les voyelles).</p>
+<div class="tablewrap" id="alpha-table"></div>
+<h3>Les 5 lettres finales</h3>
+<p>Cinq lettres prennent une autre forme quand elles terminent un mot : <span class="he">כ → ך</span>, <span class="he">מ → ם</span>, <span class="he">נ → ן</span>, <span class="he">פ → ף</span>, <span class="he">צ → ץ</span>. Le son ne change pas.</p>
+<h3>Lettres à deux sons</h3>
+<p>Les lettres <span class="he">ב ג ד כ פ ת</span> (appelées « begadkefat ») peuvent recevoir un point au centre, le <em>daguesh</em>. En hébreu biblique, ce point indique la prononciation dure : <span class="he">בּ</span> = b, <span class="he">ב</span> = v ; <span class="he">כּ</span> = k, <span class="he">כ</span> = kh ; <span class="he">פּ</span> = p, <span class="he">פ</span> = f.</p>
+<h3>Shin et Sin</h3>
+<p>La même lettre se lit <span class="he">שׁ</span> « sh » avec un point en haut à droite, et <span class="he">שׂ</span> « s » avec un point en haut à gauche.</p>`
+},
+{
+  id:"voyelles", type:"article", cat:"Lecture", heb:"נִקּוּד",
+  title:"Les voyelles hébraïques (le nikkoud)",
+  summary:"Les signes placés sous, dans ou au-dessus des lettres pour indiquer les voyelles.",
+  keywords:"voyelles nikkoud qamets patah tsere segol hireq holem qibbouts shoureq shewa lecture",
+  body:`
+<p>Le texte biblique imprimé porte des voyelles, ajoutées par les massorètes. Elles se lisent <strong>après</strong> la consonne qui les porte. Les exemples ci-dessous utilisent la lettre <span class="he">ב</span>.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Signe</th><th>Nom</th><th>Son</th></tr></thead>
+<tbody>
+<tr><td class="big">בָ</td><td>Qamets</td><td>a (parfois o)</td></tr>
+<tr><td class="big">בַ</td><td>Patah</td><td>a</td></tr>
+<tr><td class="big">בֵ</td><td>Tséré</td><td>é</td></tr>
+<tr><td class="big">בֶ</td><td>Ségol</td><td>è</td></tr>
+<tr><td class="big">בִ</td><td>Hireq</td><td>i</td></tr>
+<tr><td class="big">בֹ</td><td>Holem</td><td>o</td></tr>
+<tr><td class="big">בוֹ</td><td>Holem avec vav</td><td>o</td></tr>
+<tr><td class="big">בֻ</td><td>Qibbouts</td><td>ou</td></tr>
+<tr><td class="big">בוּ</td><td>Shoureq</td><td>ou</td></tr>
+<tr><td class="big">בְ</td><td>Shewa</td><td>e très bref, ou muet</td></tr>
+</tbody></table></div>
+<div class="note">Astuce : commencez par lire lentement des mots courts, lettre par lettre, en disant à voix haute la consonne puis sa voyelle.</div>`
+},
+{
+  id:"verbe", type:"article", cat:"Grammaire", heb:"שֹׁרֶשׁ",
+  title:"Le verbe hébreu : racine et binyanim",
+  summary:"Comprendre la racine de trois lettres et les sept formes verbales principales.",
+  keywords:"verbe racine trilitère binyan binyanim qal niphal piel pual hiphil hophal hitpael accompli inaccompli conjugaison",
+  body:`
+<p>La plupart des mots hébreux sont construits sur une <strong>racine de trois consonnes</strong>. Par exemple, la racine <span class="he">כ־ת־ב</span> exprime l'idée d'écrire.</p>
+<h3>Les sept binyanim</h3>
+<p>Une même racine se conjugue dans plusieurs « constructions » (binyanim), qui changent le sens : simple, passif, intensif, causatif, réfléchi.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Binyan</th><th>Valeur générale</th></tr></thead>
+<tbody>
+<tr><td>Qal</td><td>forme simple, active</td></tr>
+<tr><td>Niphal</td><td>passif ou réfléchi du Qal</td></tr>
+<tr><td>Piel</td><td>intensif actif</td></tr>
+<tr><td>Poual</td><td>passif du Piel</td></tr>
+<tr><td>Hiphil</td><td>causatif actif (faire faire)</td></tr>
+<tr><td>Hophal</td><td>passif du Hiphil</td></tr>
+<tr><td>Hitpaël</td><td>réfléchi</td></tr>
+</tbody></table></div>
+<h3>Accompli et inaccompli</h3>
+<p>L'hébreu biblique distingue surtout l'<strong>accompli</strong> (action vue comme achevée) et l'<strong>inaccompli</strong> (action vue comme en cours ou à venir). La méthode Yehi-Or commence par l'inaccompli.</p>
+`
+},
+{
+  id:"ecrire-ordinateur", type:"article", cat:"Clavier", heb:"⌨",
+  title:"Écrire en hébreu sur son ordinateur ou son téléphone",
+  summary:"Ajouter le clavier hébreu sur Windows, Mac, iPhone et Android.",
+  keywords:"clavier hébreu installer windows mac iphone android écrire taper",
+  body:`
+<h3>Windows</h3>
+<p>Paramètres → Heure et langue → Langue et région → Ajouter une langue → Hébreu. Passez d'un clavier à l'autre avec <strong>Windows + Espace</strong>.</p>
+<h3>Mac</h3>
+<p>Réglages Système → Clavier → Méthodes de saisie → Modifier → bouton + → Hébreu. Le changement se fait depuis le menu en haut de l'écran ou avec <strong>Ctrl + Espace</strong>.</p>
+<h3>iPhone et iPad</h3>
+<p>Réglages → Général → Clavier → Claviers → Ajouter un clavier → Hébreu. Touchez le globe sur le clavier pour changer.</p>
+<h3>Android</h3>
+<p>Ouvrez les paramètres de votre clavier (Gboard par exemple) → Langues → Ajouter un clavier → Hébreu.</p>
+<div class="note">Pour taper les voyelles, le plus simple sans installation est le <a href="#outil-clavier">clavier hébreu en ligne</a> de ce site.</div>`
+},
+{
+  id:"esaie-6", type:"article", cat:"Textes", heb:"יְשַׁעְיָהוּ ו", soon:true,
+  title:"Lire Ésaïe 6 mot à mot",
+  summary:"Analyse du chapitre mot à mot : racine, binyan, temps. En préparation.",
+  keywords:"esaïe isaïe 6 texte biblique analyse mot à mot lecture",
+  body:`<p>Une lecture complète d'Ésaïe 6 est en préparation. Chaque mot sera analysé (racine, binyan, temps, conjugaison) et relié aux cours, avec la traduction littérale affichée au toucher.</p>`
+},
+{
+  id:"a-propos", type:"page", cat:"À propos",
+  title:"À propos de ce site",
+  summary:"Pourquoi ces ressources sont gratuites.",
+  keywords:"à propos gratuit david elie yehi-or",
+  body:`
+<p>Ce site rassemble des outils et des explications pour apprendre l'<strong>hébreu biblique</strong>. Tout est offert gratuitement, pour que chacun puisse lire les Écritures dans leur langue d'origine et se rapprocher de Dieu.</p>
+<p>Les ressources sont établies par David Elie, avec nos remerciements à l'institut Yehi-Or. Une application pour apprendre peut être mise à disposition sous réserve d'être inscrit à Yehi-Or : <a href="https://www.helloasso.com/associations/yehi-or-institut" target="_blank" rel="noopener">inscrivez-vous auprès de Yehi-Or</a>.</p>
+<p>De nouveaux outils et articles sont ajoutés au fil des études.</p>`
+}
+];
+
+// ===== DONNÉES ALPHABET =====
+const LETTERS = [
+ ["א","Aleph","muette (coup de glotte)",1],["ב","Bet","b / v",2],["ג","Guimel","g",3],["ד","Dalet","d",4],
+ ["ה","Hé","h",5],["ו","Vav","v (w)",6],["ז","Zayin","z",7],["ח","Het","h guttural",8],
+ ["ט","Tet","t",9],["י","Yod","y",10],["כ","Kaf","k / kh",20,"ך"],["ל","Lamed","l",30],
+ ["מ","Mem","m",40,"ם"],["נ","Noun","n",50,"ן"],["ס","Samekh","s",60],["ע","Ayin","muette (gutturale)",70],
+ ["פ","Pé","p / f",80,"ף"],["צ","Tsadé","ts",90,"ץ"],["ק","Qof","q",100],["ר","Resh","r",200],
+ ["ש","Shin / Sin","sh / s",300],["ת","Tav","t",400]
+];
+const VOWELS = [["ַ","patah"],["ָ","qamets"],["ֵ","tséré"],["ֶ","ségol"],["ִ","hireq"],["ֹ","holem"],["ֻ","qibbouts"],["ְ","shewa"],["ּ","daguesh"],["ׁ","point shin"],["ׂ","point sin"]];
+
+const COPYRIGHT = `<div class="copyright">
+<p><strong>© 2026, David Elie. Tous droits réservés.</strong></p>
+<p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments de ce dictionnaire, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l'auteur.</p>
+<p>L'exploitation, la reproduction ou la diffusion de cet ouvrage à des fins commerciales est strictement interdite.</p>
+<p>Toute exploitation non autorisée de l'ouvrage ou de l'un quelconque des éléments qu'il contient sera considérée comme constitutive d'une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de la Propriété Intellectuelle.</p>
+</div>`;
+const NO_COPYRIGHT = ["outil-clavier"];
+// ===== AFFICHAGE =====
+const app = document.getElementById("app");
+let filter = "Tout", query = "";
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+const esc = s => s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function listView(onlyTools, libOnly){
+  const cats = ["Tout", ...new Set(ARTICLES.filter(a=>a.type!=="page").map(a=>a.cat))];
+  app.innerHTML = `
+  <div class="searchbar">
+    <label for="q">${onlyTools ? "Les outils gratuits" : libOnly ? "Bibles et dictionnaires" : "Que cherchez-vous ?"}</label>
+    <input id="q" type="search" placeholder="Ex. : voyelles, clavier, binyan, alphabet…" value="${esc(query)}" autocomplete="off">
+  </div>
+  ${onlyTools||libOnly ? "" : `<div class="chips" role="group" aria-label="Thèmes">${cats.map(c=>`<button class="chip" aria-pressed="${c===filter}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}</div>`}
+  <main><p class="count" id="count"></p><div class="list" id="list"></div></main>`;
+  const input = document.getElementById("q");
+  input.addEventListener("input", e=>{ query=e.target.value; renderList(onlyTools, libOnly); });
+  app.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.cat; listView(onlyTools, libOnly);}));
+  renderList(onlyTools, libOnly);
+}
+function renderList(onlyTools, libOnly){
+  const q = norm(query.trim());
+  const items = ARTICLES.filter(a=>{
+    if(a.type==="page") return false;
+    if(onlyTools && a.type!=="outil") return false;
+    if(libOnly && a.type!=="biblio") return false;
+    if(!onlyTools && filter!=="Tout" && a.cat!==filter) return false;
+    if(!q) return true;
+    return norm(a.title+" "+a.summary+" "+a.keywords+" "+a.cat+" "+a.body.replace(/<[^>]+>/g," ")).includes(q);
+  });
+  document.getElementById("count").textContent = items.length + (items.length>1?" résultats":" résultat");
+  document.getElementById("list").innerHTML = items.length ? items.map(a=>`
+    <a class="card" href="#${a.id}">
+      <span class="cat">${a.type==="outil"?"Outil":esc(a.cat)}</span>
+      ${a.heb?`<span class="heb" aria-hidden="true">${a.heb}</span>`:""}
+      <h3>${esc(a.title)}</h3>
+      <p>${esc(a.summary)}</p>
+      ${a.soon?`<span class="tag-soon">Bientôt disponible</span>`:""}
+    </a>`).join("") : `<div class="empty">Aucun résultat pour « ${esc(query)} ». Essayez un autre mot, par exemple « lettre » ou « verbe ».</div>`;
+}
+function articleView(a){
+  document.title = a.title + " · Hébreu biblique libre";
+  app.innerHTML = `<main><article>
+    <a class="back" href="${a.type==="outil"?"#outils":a.type==="biblio"?"#bibliotheque":"#accueil"}">← Retour</a>
+    <h2>${esc(a.title)}</h2>
+    <div class="meta">${a.type==="outil"?"Outil gratuit":esc(a.cat)}${a.soon?" · bientôt disponible":""}</div>
+    ${a.body}
+    ${NO_COPYRIGHT.includes(a.id)?"":COPYRIGHT}
+  </article></main>`;
+  if(document.getElementById("alpha-table")) alphaTable();
+  if(document.getElementById("kb-zone")) keyboard();
+  if(document.getElementById("abc-zone")) alphabetTool();
+  window.scrollTo(0,0);
+}
+function route(){
+  const h = location.hash.replace("#","") || "accueil";
+  document.querySelectorAll("nav.main a").forEach(l=>l.classList.toggle("on", l.dataset.nav===h));
+  document.title = "Hébreu biblique libre";
+  if(h==="accueil") return listView(false);
+  if(h==="outils") return listView(true);
+  if(h==="bibliotheque") return listView(false,true);
+  const a = ARTICLES.find(x=>x.id===h);
+  a ? articleView(a) : listView(false);
+}
+window.addEventListener("hashchange", route);
+
+// ===== OUTILS =====
+function alphaTable(){
+  document.getElementById("alpha-table").innerHTML = `<table>
+  <thead><tr><th>Lettre</th><th>Finale</th><th>Nom</th><th>Son</th><th>Valeur</th></tr></thead>
+  <tbody>${LETTERS.map(l=>`<tr><td class="big">${l[0]}</td><td class="big">${l[4]||""}</td><td>${l[1]}</td><td>${l[2]}</td><td class="num">${l[3]}</td></tr>`).join("")}</tbody></table>`;
+}
+function keyboard(){
+  const z = document.getElementById("kb-zone");
+  const finals = ["ך","ם","ן","ף","ץ"];
+  z.innerHTML = `
+  <label for="kb-out" class="meta">Votre texte</label>
+  <textarea id="kb-out" class="kb-out" dir="rtl" lang="he"></textarea>
+  <div class="kb" aria-label="Lettres">${LETTERS.map(l=>`<button type="button" data-k="${l[0]}" title="${l[1]}">${l[0]}<small>${l[1].split(" ")[0]}</small></button>`).join("")}
+  ${finals.map(f=>`<button type="button" data-k="${f}" title="finale">${f}<small>finale</small></button>`).join("")}</div>
+  <p class="meta">Voyelles et signes (à placer après la lettre)</p>
+  <div class="kb" aria-label="Voyelles">${VOWELS.map(v=>`<button type="button" data-k="${v[0]}" title="${v[1]}">ב${v[0]}<small>${v[1]}</small></button>`).join("")}
+  <button type="button" data-k="־" title="maqqef">־<small>maqqef</small></button></div>
+  <div class="kb-actions">
+    <button class="btn" type="button" data-act="space">Espace</button>
+    <button class="btn ghost" type="button" data-act="back">Effacer un signe</button>
+    <button class="btn ghost" type="button" data-act="clear">Tout effacer</button>
+    <button class="btn" type="button" data-act="copy">Copier le texte</button>
+  </div>
+  <p class="status" id="kb-status" aria-live="polite"></p>`;
+  const out = document.getElementById("kb-out"), st = document.getElementById("kb-status");
+  const insert = t => { const s=out.selectionStart??out.value.length, e=out.selectionEnd??out.value.length;
+    out.value = out.value.slice(0,s)+t+out.value.slice(e); out.selectionStart=out.selectionEnd=s+t.length; out.focus(); };
+  z.querySelectorAll("[data-k]").forEach(b=>b.addEventListener("click",()=>insert(b.dataset.k)));
+  z.querySelectorAll("[data-act]").forEach(b=>b.addEventListener("click",async()=>{
+    const a=b.dataset.act;
+    if(a==="space") insert(" ");
+    if(a==="back"){ const arr=[...out.value]; arr.pop(); out.value=arr.join(""); }
+    if(a==="clear") out.value="";
+    if(a==="copy"){ try{ await navigator.clipboard.writeText(out.value); st.textContent="Texte copié."; }
+      catch(e){ out.select(); st.textContent="Sélectionné : faites Ctrl+C (ou Cmd+C) pour copier."; } }
+  }));
+}
+function alphabetTool(){
+  const z = document.getElementById("abc-zone");
+  z.innerHTML = `<div class="abc">${LETTERS.map((l,i)=>`<button type="button" class="letter" aria-expanded="false" data-i="${i}">
+    <div class="g">${l[0]}</div><div class="n">${l[1]}</div><div class="d">${l[2]} · ${l[3]}</div><div class="d x" hidden>${l[4]?"Forme finale : <span class='he'>"+l[4]+"</span>":(l[0]==="ש"?"שׁ = sh, שׂ = s":(["ב","ג","ד","ת"].includes(l[0])?"Peut recevoir un daguesh":"Pas de forme finale"))}</div></button>`).join("")}</div>
+  <h3>Quiz : quel est le nom de cette lettre ?</h3>
+  <div class="quiz"><div class="q" id="qz-l" aria-live="polite"></div>
+    <label for="qz-in" class="meta" style="margin:0">Votre réponse</label>
+    <input id="qz-in" type="text" autocomplete="off" placeholder="ex. Aleph">
+    <button class="btn" type="button" id="qz-ok">Vérifier</button>
+    <button class="btn ghost" type="button" id="qz-next">Autre lettre</button></div>
+  <p class="status" id="qz-st" aria-live="polite"></p>`;
+  z.querySelectorAll(".letter").forEach(b=>b.addEventListener("click",()=>{
+    const open=b.getAttribute("aria-expanded")==="true"; b.setAttribute("aria-expanded",!open); b.querySelector(".x").hidden=open; }));
+  let cur=0, ok=0, tot=0;
+  const L=document.getElementById("qz-l"), I=document.getElementById("qz-in"), S=document.getElementById("qz-st");
+  const next=()=>{ cur=Math.floor(Math.random()*LETTERS.length); L.textContent=LETTERS[cur][0]; I.value=""; };
+  const check=()=>{ const ans=norm(I.value.trim()).replace(/[^a-z]/g,""); if(!ans) return;
+    const good=LETTERS[cur][1].split("/").map(n=>norm(n).replace(/[^a-z]/g,"")); tot++;
+    if(good.some(g=>g===ans)){ ok++; S.textContent=`Bravo ! C'est bien ${LETTERS[cur][1]}. Score : ${ok}/${tot}`; next(); }
+    else S.textContent=`Pas tout à fait : c'est ${LETTERS[cur][1]}. Score : ${ok}/${tot}`; };
+  document.getElementById("qz-ok").addEventListener("click",check);
+  document.getElementById("qz-next").addEventListener("click",()=>{S.textContent="";next();});
+  I.addEventListener("keydown",e=>{ if(e.key==="Enter") check(); });
+  next();
+}
+// ===== PROTECTION CONTRE LA COPIE (sauf page clavier) =====
+const FREE_COPY = ["outil-clavier"];
+const isFree = () => FREE_COPY.includes(location.hash.replace("#",""));
+let msgT;
+function warn(){ const m=document.getElementById("copy-msg"); m.style.display="block"; clearTimeout(msgT); msgT=setTimeout(()=>m.style.display="none",2200); }
+function setProtect(){ document.body.classList.toggle("protect", !isFree()); }
+["copy","cut","contextmenu","dragstart","selectstart"].forEach(ev=>document.addEventListener(ev,e=>{
+  if(isFree()) return;
+  const t=e.target; if(t && t.closest && t.closest("input,textarea")) return;
+  e.preventDefault(); if(ev!=="selectstart") warn();
+}));
+document.addEventListener("keydown",e=>{
+  const k=(e.key||"").toLowerCase(), mod=e.ctrlKey||e.metaKey;
+  if(mod && (k==="p"||k==="s"||k==="u")){ e.preventDefault(); warn(); return; }
+  if(isFree()) return;
+  const inField=e.target.closest && e.target.closest("input,textarea");
+  if(mod && (k==="c"||k==="x"||k==="a") && !inField){ e.preventDefault(); warn(); }
+});
+window.addEventListener("hashchange", setProtect);
+setProtect();
+route();
+</script>
+</body>
+</html>
