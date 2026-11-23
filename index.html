@@ -131,6 +131,8 @@ body.protect img{pointer-events:none}
 .feature-card strong{font-family:var(--display);font-size:20px;line-height:1.25}
 .feature-card span:last-child{color:var(--muted);font-size:15px}
 @media (max-width:560px){.feature{grid-template-columns:1fr;padding:20px}.feature .heb-big{font-size:56px}}
+.dl-count{display:inline-block;font-size:14px;font-weight:700;color:var(--gold);background:var(--accent-soft);border-radius:999px;padding:3px 12px;margin-top:8px}
+.dl-count[hidden]{display:none}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:15px;padding:26px 0 40px}
 .empty{padding:30px;text-align:center;color:var(--muted)}
 @media (max-width:480px){body{font-size:17px}.brand h1{font-size:22px}}
@@ -192,6 +194,7 @@ const ARTICLES = [
 <li><strong>Examens</strong> par blocs de 5 cours et <strong>mini-examens</strong> pour chaque cours, avec un seuil de réussite de 70 %.</li>
 </ul>
 <p><a class="btn" href="exercices-hebreu.html">Commencer les exercices</a></p>
+<p><span class="dl-count" data-gc="/hebreu-biblique-libre/exercices-hebreu.html" data-gc-label="visites" hidden></span></p>
 <p class="meta">Les exercices suivent la progression des cours de la méthode Yehi-Or.</p>`
 },
 {
@@ -287,6 +290,7 @@ const ARTICLES = [
 <h3>Deux formats</h3>
 <p><a class="btn" href="dictionnaire-hebreu-biblique.pdf" target="_blank" rel="noopener">Pour ordinateur et tablette (PDF, 5 Mo)</a></p>
 <p><a class="btn ghost" href="dictionnaire-hebreu-biblique-telephone.pdf" target="_blank" rel="noopener">Pour téléphone (PDF, 6 Mo)</a></p>
+<p><span class="dl-count" data-gc="telechargement/dictionnaire-hebreu-biblique.pdf,telechargement/dictionnaire-hebreu-biblique-telephone.pdf" hidden></span></p>
 <p><a href="dictionnaire-hebreu-francais.html">Présentation complète du dictionnaire</a></p>
 <p class="meta">Édition de novembre 2026.</p>`
 },
@@ -441,6 +445,7 @@ const FEATURE = `<section class="feature" aria-label="À la une">
       <a class="btn ghost" href="dictionnaire-hebreu-biblique-telephone.pdf" target="_blank" rel="noopener">Version téléphone</a>
       <a class="btn ghost" href="dictionnaire-hebreu-francais.html">En savoir plus</a>
     </div>
+    <span class="dl-count" data-gc="telechargement/dictionnaire-hebreu-biblique.pdf,telechargement/dictionnaire-hebreu-biblique-telephone.pdf" hidden></span>
   </div>
 </section>
 <div class="feature-row">
@@ -449,6 +454,7 @@ const FEATURE = `<section class="feature" aria-label="À la une">
     <span class="fc-heb" aria-hidden="true">תַּרְגִּילִים</span>
     <strong>Exercices d'hébreu biblique</strong>
     <span>Plus de 20 exercices, examens et mini-examens.</span>
+    <span class="dl-count" data-gc="/hebreu-biblique-libre/exercices-hebreu.html" data-gc-label="visites" hidden></span>
   </a>
   <a class="feature-card" href="#schemes-binyanim">
     <span class="eyebrow">Exercices</span>
@@ -613,5 +619,16 @@ window.addEventListener("hashchange", setProtect);
 setProtect();
 route();
 </script>
+<script>
+window.goatcounter={path:function(p){return p+location.hash;}};
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a||!window.goatcounter||!window.goatcounter.count)return;var h=a.getAttribute('href')||'';if(/\.pdf($|[?#])/i.test(h)){var f=h.split('/').pop();window.goatcounter.count({path:'telechargement/'+f,title:'Téléchargement '+f,event:true});}});
+window.addEventListener('hashchange',function(){if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:location.pathname+location.hash});});
+['startExam','startMiniExam','go'].forEach(function(n){var f=window[n];if(typeof f!=='function')return;window[n]=function(){try{var x=arguments[0];if(window.goatcounter&&window.goatcounter.count&&x!==undefined&&typeof x!=='object')window.goatcounter.count({path:'exercices/'+(n==='go'?'':n+'/')+x,title:(n==='startExam'?'Examen ':n==='startMiniExam'?'Mini-examen ':'Exercice ')+x,event:true});}catch(err){}return f.apply(this,arguments);};});
+(function(){var GC='https://hebreu-biblique-libre.goatcounter.com/counter/',cache={};
+function get(p){if(!cache[p])cache[p]=fetch(GC+encodeURIComponent(p)+'.json').then(function(r){return r.ok?r.json():{count:'0'};}).then(function(j){return parseInt(String(j.count).replace(/\D/g,''),10)||0;}).catch(function(){return 0;});return cache[p];}
+function show(){document.querySelectorAll('[data-gc]:not([data-gc-done])').forEach(function(el){el.setAttribute('data-gc-done','1');Promise.all(el.getAttribute('data-gc').split(',').map(get)).then(function(a){var n=a.reduce(function(x,y){return x+y;},0);if(n>0){el.textContent=n.toLocaleString('fr-FR')+' '+(el.getAttribute('data-gc-label')||'téléchargements');el.hidden=false;}});});}
+var t;new MutationObserver(function(){clearTimeout(t);t=setTimeout(show,100);}).observe(document.body,{childList:true,subtree:true});show();})();
+</script>
+<script data-goatcounter="https://hebreu-biblique-libre.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
