@@ -9704,5 +9704,16 @@ function dismissDageshNotice(){
   render();
 })();
 </script>
+<script>
+window.goatcounter={path:function(p){return p+location.hash;}};
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a||!window.goatcounter||!window.goatcounter.count)return;var h=a.getAttribute('href')||'';if(/\.pdf($|[?#])/i.test(h)){var f=h.split('/').pop();window.goatcounter.count({path:'telechargement/'+f,title:'Téléchargement '+f,event:true});}});
+window.addEventListener('hashchange',function(){if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:location.pathname+location.hash});});
+['startExam','startMiniExam','go'].forEach(function(n){var f=window[n];if(typeof f!=='function')return;window[n]=function(){try{var x=arguments[0];if(window.goatcounter&&window.goatcounter.count&&x!==undefined&&typeof x!=='object')window.goatcounter.count({path:'exercices/'+(n==='go'?'':n+'/')+x,title:(n==='startExam'?'Examen ':n==='startMiniExam'?'Mini-examen ':'Exercice ')+x,event:true});}catch(err){}return f.apply(this,arguments);};});
+(function(){var GC='https://hebreu-biblique-libre.goatcounter.com/counter/',cache={};
+function get(p){if(!cache[p])cache[p]=fetch(GC+encodeURIComponent(p)+'.json').then(function(r){return r.ok?r.json():{count:'0'};}).then(function(j){return parseInt(String(j.count).replace(/\D/g,''),10)||0;}).catch(function(){return 0;});return cache[p];}
+function show(){document.querySelectorAll('[data-gc]:not([data-gc-done])').forEach(function(el){el.setAttribute('data-gc-done','1');Promise.all(el.getAttribute('data-gc').split(',').map(get)).then(function(a){var n=a.reduce(function(x,y){return x+y;},0);if(n>0){el.textContent=n.toLocaleString('fr-FR')+' '+(el.getAttribute('data-gc-label')||'téléchargements');el.hidden=false;}});});}
+var t;new MutationObserver(function(){clearTimeout(t);t=setTimeout(show,100);}).observe(document.body,{childList:true,subtree:true});show();})();
+</script>
+<script data-goatcounter="https://hebreu-biblique-libre.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
